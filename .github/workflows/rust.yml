@@ -24,3 +24,7 @@ jobs:
       run: rustup target add riscv64imac-unknown-none-elf
     - name: Build
       run: cargo build --verbose --release --target=riscv64imac-unknown-none-elf
+    - name: Install debugger
+      run: curl -LO https://github.com/nervosnetwork/ckb-standalone-debugger/releases/download/v0.112.1/ckb-debugger-linux-x64.tar.gz && tar xzf ckb-debugger-linux-x64.tar.gz && rm ckb-debugger-linux-x64.tar.gz
+    - name: Run the contract with debugger
+      run: ./ckb-debugger --bin target/riscv64imac-unknown-none-elf/release/ckb-contract-bytes-without-a --script-version=1

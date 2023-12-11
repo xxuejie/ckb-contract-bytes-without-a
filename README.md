@@ -22,12 +22,12 @@ And run it via `ckb-debugger`:
 
 ```
 $ ckb-debugger --bin target/riscv64imac-unknown-none-elf/release/ckb-contract-bytes-without-a --script-version=1
-Run result: -73
-Total cycles consumed: 20077(19.6K)
-Transfer cycles: 5209(5.1K), running cycles: 14868(14.5K)
+Run result: 0
+Total cycles consumed: 18936(18.5K)
+Transfer cycles: 5106(5.0K), running cycles: 13830(13.5K)
 ```
 
-Note that a run result of `-73`(or any other return value) is a success here. As a comparison, debugger would throw an error when the contract actually contains instruction from A extension:
+In fact any run result here(whether it is 0 or not) indicates a success. As a comparison, debugger would throw an error when the contract actually contains instruction from A extension(you can remove `.cargo/config.toml` file, then rebuild the contract to give this a test):
 
 ```
 ckb-debugger --bin target/riscv64imac-unknown-none-elf/release/ckb-contract-bytes-without-a --script-version=1
