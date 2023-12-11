@@ -17,7 +17,12 @@ pub fn program_entry() -> i8 {
     let mut buf = BytesMut::new();
     buf.extend(data.slice(8..));
     buf.extend(data2);
-    code::run(buf.freeze())
+    let r = code::run(buf.freeze());
+    if r != 0 {
+        0
+    } else {
+        1
+    }
 }
 
 // Just some silly code to play with Bytes so it won't be eaten by compilers.
